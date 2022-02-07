@@ -1,0 +1,95 @@
+.post img{
+    width:100%;
+    border-radius: 8px 8px 0px 0px;
+    height: 150px;
+    object-fit: cover;
+    filter: brightness(0.75);
+}
+
+.post-content{
+    padding:10px;
+    border-left:1px solid #dcdcdc;
+    border-right:1px solid #dcdcdc;
+    border-bottom:1px solid #dcdcdc;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.post .tag{
+    color:#949494
+}
+
+.post h1{
+    font-size:28px;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.post p{
+    color:#949494
+}
+
+.creator{
+    padding:10px 15px;
+    color:#fff;
+    text-transform: capitalize;
+}
+
+.creator h4{
+    font-size:20px;
+    margin-bottom: 5px;
+}
+
+.creator p{
+    color:#fff;
+    font-size:14px
+}
+
+.post-actions button{
+    color:rgb(0, 45, 170);
+}
+
+.post-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.like-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-topbar{
+    position: absolute;
+    z-index: 9999;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.post-topbar .icon{
+    color:#fff;
+    font-size:24px;
+    padding-top: 5px;
+}
+
+.post{
+    position: relative;
+}
+
+.menu-list{
+    background: #fff;
+    position: absolute;
+    right: 5px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.menu-list ul{
+    list-style: none;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 0px;
+}

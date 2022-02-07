@@ -1,0 +1,11 @@
+.post-form{
+    background:#fff;
+    margin-top:60px;
+}
+.post-form h2{
+    margin-bottom: 30px;
+}
+
+.post-form button{
+    width:100%
+}
