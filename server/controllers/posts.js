@@ -52,10 +52,12 @@ postControllers.deletePost=async(req,res) => {
 
 
 postControllers.updatePost=async(req,res) => {
-    const postId=req.params.id
-
     try{
 
+        // console.log(req.body)
+
+        const postUpdate=await Posts.findOneAndUpdate({_id:req.body._id},req.body,{new: true})
+        res.json(postUpdate)
     }catch(error){
         res.json({message: error.message})
     }
@@ -64,12 +66,12 @@ postControllers.updatePost=async(req,res) => {
 
 
 postControllers.fetchPostById=async(req,res) => {
+
     const postId=mongoose.Types.ObjectId(req.params.id)
 
     try{
-        // const getPost=await Posts.findOne({"_id":postId})
-        // res.json(getPost)
-        console.log("hello")
+        const getPost=await Posts.findOne({"_id":postId})
+        res.json(getPost)
     }catch(error){
         res.json({message: error.message})
     }
