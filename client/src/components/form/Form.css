@@ -1,6 +1,8 @@
 .post-form{
     background:#fff;
     margin-top:60px;
+    padding:15px 10px;
+    border-radius: 10px;
 }
 .post-form h2{
     margin-bottom: 30px;

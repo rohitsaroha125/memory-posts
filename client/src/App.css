@@ -1,3 +1,9 @@
+
+body{
+    background-image: url('./bg.jpeg');
+    background-size: cover;
+}
+
 .app{
     max-width:80%;
 }
@@ -13,3 +19,4 @@
 .navbar h2{
     margin-bottom: 0px;
 }
+

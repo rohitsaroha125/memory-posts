@@ -1,0 +1,48 @@
+.auth-card{
+    background:#fff;
+    padding:30px 10px 15px 10px;
+    border-radius: 4px;
+    margin-top:60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock-img{
+    background: #c7008b;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:#fff;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.auth-card h4{
+    margin-bottom: 30px;
+}
+
+.form{
+    width:100%
+}
+
+.form input{
+width: 100%;
+margin-bottom: 20px;
+}
+
+.form button{
+    width:100%
+}
+
+.auth-tag{
+    margin-top:15px;
+    text-align: right;
+    font-size:14px;
+    cursor: pointer;
+}
