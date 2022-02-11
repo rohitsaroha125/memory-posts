@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 import {BsLockFill} from 'react-icons/bs'
 import {GoogleLogin} from 'react-google-login'
@@ -6,8 +6,11 @@ import {BsGoogle} from 'react-icons/bs'
 import {useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { signInAction } from '../../actions/auth'
+
 export const SignIn=({signUp, setSignUp}) => {
 
+    const [formData,setFormData]=useState({email:'',password:''})
 
     const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -27,6 +30,18 @@ export const SignIn=({signUp, setSignUp}) => {
 
       }
 
+      const handleChange=(e) => {
+        setFormData({...formData,[e.target.name]: e.target.value})
+      }
+
+
+      const handleSubmit=async (e) => {
+          e.preventDefault()
+          await dispatch(signInAction(formData))
+          navigate('/')
+      }
+
+
     return(
         <div className='row'>
                 <div className='col-sm-4 offset-sm-4 auth-card text-center'>
@@ -37,13 +52,13 @@ export const SignIn=({signUp, setSignUp}) => {
                     <div className='form'>
                     <form>
                         <div className='form-group'>
-                            <input type="email" className='form-control' placeholder='Email Address*' name="email" id="email" />
+                            <input type="email" className='form-control' placeholder='Email Address*' name="email" id="email" onChange={(e) => handleChange(e)} />
                         </div>
                         <div className='form-group'>
-                            <input type="password" className='form-control' placeholder='Password*' name="password" id="password" />
+                            <input type="password" className='form-control' placeholder='Password*' name="password" id="password" onChange={(e) => handleChange(e)} />
                         </div>
                         <div className='form-group'>
-                            <button className='btn btn-primary'>SUBMIT</button>
+                            <button className='btn btn-primary' onClick={(e) => handleSubmit(e)}>SUBMIT</button>
                         </div>
                     </form>
                     <p style={{marginBottom:"0px",marginTop:"10px",color:"#9a9a9a"}}>or</p>

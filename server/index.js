@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import postRouter from './routes/posts.js'
+import userRouter from './routes/users.js'
 
 const app=express()
 
@@ -14,6 +15,7 @@ app.use(cors())
 
 //endpoints for app
 app.use('/posts',postRouter)
+app.use('/user',userRouter)
 
 const mongo_url=`mongodb+srv://rohit125:rohit999@practice.xydsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 

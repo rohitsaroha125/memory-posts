@@ -12,11 +12,14 @@ postControllers.fetchPosts=async (req, res) => {
 }
 
 postControllers.createPost=async (req,res) => {
+    const user=req.user
 
-    const postData=req.body
+    const {title, message, creator, tags, image}=req.body
+
+    let data={title,message,creator,tags,image,user: user._id}
 
     try{
-        const newPost=await new Posts(postData)
+        const newPost=await new Posts(data)
         const savePost=await newPost.save()
         res.status(201).json(savePost)
     }catch(error){

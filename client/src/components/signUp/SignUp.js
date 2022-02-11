@@ -1,17 +1,26 @@
 import React,{useState} from 'react'
 import {BsLockFill} from 'react-icons/bs'
 
+import {useDispatch} from 'react-redux'
+
+import { signUpAction } from '../../actions/auth'
+
+import { useNavigate } from 'react-router-dom'
+
 export const SignUp=({signUp,setSignUp}) => {
 
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
     const [formData,setFormData]=useState({name:'',email:'',password:'',repeatPassword:''})
 
     const handleChange=(e) => {
         setFormData({...formData,[e.target.name]: e.target.value})
     }
 
-    const handleSubmit=(e) => {
+    const handleSubmit=async (e) => {
         e.preventDefault()
-        console.log(formData)
+        await dispatch(signUpAction(formData))
+        navigate('/')
     }
 
     return(
