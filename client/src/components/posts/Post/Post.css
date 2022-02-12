@@ -61,6 +61,11 @@
     align-items: center;
 }
 
+.like-btn-disable{
+    color:#919191 !important;
+    cursor: unset !important;
+}
+
 .post-topbar{
     position: absolute;
     z-index: 9999;
@@ -78,6 +83,8 @@
 
 .post{
     position: relative;
+    margin-bottom:15px;
+    cursor: pointer;
 }
 
 .menu-list{

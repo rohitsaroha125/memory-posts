@@ -4,7 +4,7 @@ import { Post } from './Post/Post'
 import { fetchPosts } from '../../api/posts'
 import './Posts.css'
 
-export const Posts=() => {
+export const Posts=({user}) => {
 
     const posts=useSelector((state) => state.posts)
 
@@ -19,7 +19,7 @@ export const Posts=() => {
             posts.map((post,i) => {
                 return(
                     <div className='col-sm-6'>
-                        <Post key={i} post={post} />
+                        <Post user={user} key={i} post={post} />
                     </div>
                 )
             })

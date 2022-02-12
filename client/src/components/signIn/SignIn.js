@@ -62,7 +62,7 @@ export const SignIn=({signUp, setSignUp}) => {
                         </div>
                     </form>
                     <p style={{marginBottom:"0px",marginTop:"10px",color:"#9a9a9a"}}>or</p>
-                    <GoogleLogin
+                    {/* <GoogleLogin
     clientId="962615186085-8td2lbpbkipl55r61l8ir0ii4rt7837l.apps.googleusercontent.com"
     render={renderProps => (
       <button onClick={renderProps.onClick} className="btn" disabled={renderProps.disabled} style={{background:"#dc4a38",color:"#fff",marginTop:"10px"}}><BsGoogle />&nbsp;&nbsp;Sign in with Google</button>
@@ -71,8 +71,8 @@ export const SignIn=({signUp, setSignUp}) => {
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
-  />
-                    <p className='auth-tag' onClick={() => setSignUp(true)}>Don't have an account? <span><b>Create Account</b></span></p>
+  /> */}
+                    <p className='auth-tag text-center' onClick={() => setSignUp(true)}>Don't have an account? <span><b>Create Account</b></span></p>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,9 @@ export const createPost=(post) => async(dispatch) => {
 
 export const likePost=(postId) => async(dispatch) => {
     try{
+
+        // console.log("Inside likepost action")
+
         const {data}=await api.likePost(postId)
         dispatch({type:LIKE,payload: data})
     }catch(error){

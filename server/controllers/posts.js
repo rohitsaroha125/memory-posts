@@ -14,9 +14,11 @@ postControllers.fetchPosts=async (req, res) => {
 postControllers.createPost=async (req,res) => {
     const user=req.user
 
-    const {title, message, creator, tags, image}=req.body
+    const {title, message, tags, image}=req.body
 
-    let data={title,message,creator,tags,image,user: user._id}
+    const tagArray=tags.split(",")
+
+    let data={title,message,creator: user.name,tags: tagArray,image,user: user._id}
 
     try{
         const newPost=await new Posts(data)
@@ -28,13 +30,20 @@ postControllers.createPost=async (req,res) => {
 }
 
 postControllers.likePost=async(req,res) => {
-    const postId=req.params.id
+    const postId=req.body.postId
+    const user=req.user
 
     try{
         const getLikeCount=await Posts.findOne({_id: postId})
-        const updateLike=await Posts.findOneAndUpdate({_id: postId},{likeCount: getLikeCount.likeCount+1},{new: true})
+        const checkLikeExists=await Posts.findOne({_id: postId, likeCount: user._id})
 
-        res.json(updateLike)
+        if(checkLikeExists){
+            const updateLike=await Posts.findOneAndUpdate({_id: postId},{$pull: {likeCount: user._id }},{new: true})
+            res.json(updateLike) 
+        }else{
+            const updateLike=await Posts.findOneAndUpdate({_id: postId},{$push: {likeCount: user._id }},{new: true})
+            res.json(updateLike)
+        }
     }catch(error){
         res.json({message: error.message})
     }

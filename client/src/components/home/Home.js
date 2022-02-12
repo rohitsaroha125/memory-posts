@@ -6,7 +6,7 @@ export const Home=({user}) => {
     return(
         <div className='row'>
         <div className='col-sm-7'>
-            <Posts />
+            <Posts user={user} />
         </div>
         <div className='col-sm-5'>
             <Form user={user} />

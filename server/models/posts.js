@@ -4,12 +4,15 @@ const postSchema=mongoose.Schema({
     title: String,
     message: String,
     creator:String,
-    tags: [String],
+    tags: [{
+        type: String,
+        trim: true
+    }],
     image: String,
-    likeCount:{
-        type:Number,
-        default:0
-    },
+    likeCount:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

@@ -13,7 +13,7 @@ export const createPost=(post) =>axios.post(url,post,{
         'x-auth':getCookie('setUser')
     }
 }) 
-export const likePost=(postId) => axios.post(`${url}/like/${postId}`,{
+export const likePost=(postId) => axios.post(`${url}/like`,{postId},{
     headers:{
         'x-auth':getCookie('setUser')
     }

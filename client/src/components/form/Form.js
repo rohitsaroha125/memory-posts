@@ -9,13 +9,20 @@ import './Form.css'
 
 export const Form=({user}) => {
 
-    const [formData,setFormData]=useState({creator:'',title:'',message:'',tags:'',image:''})
+    const [formData,setFormData]=useState({title:'',message:'',tags:'',image:'',btnDisable:false})
     const dispatch=useDispatch()
 
-    const handleSubmit=(e) => {
+    const clear=() => {
+        setFormData({title:'',message:'',tags:'',image:'',btnDisable:false})
+    }
+
+    const handleSubmit=async (e) => {
+        //prevent default event and disable button till dispatch is completed
         e.preventDefault()
-        dispatch(createPost(formData))
-        console.log(formData)
+        setFormData({...formData,btnDisable: true})
+
+        await dispatch(createPost(formData))
+        clear()
     }
 
     return(
@@ -25,19 +32,15 @@ export const Form=({user}) => {
                     <form className='post-form' onSubmit={(e) => handleSubmit(e)}>
         <h2 className='text-center'>Creating a memory</h2>
         <div className='form-gorup mb-3'>
-            <input type="text" className='form-control' placeholder='Creator' onChange={(e) => setFormData({...formData, creator: e.target.value})}>
+            <input type="text" className='form-control' placeholder='Title' value={formData?.title} onChange={(e) => setFormData({...formData,title: e.target.value})}>
             </input>
         </div>
         <div className='form-gorup mb-3'>
-            <input type="text" className='form-control' placeholder='Title' onChange={(e) => setFormData({...formData,title: e.target.value})}>
-            </input>
-        </div>
-        <div className='form-gorup mb-3'>
-            <textarea className='form-control' placeholder='Message' onChange={(e) => setFormData({...formData, message: e.target.value})}>
+            <textarea className='form-control' placeholder='Message' value={formData?.message} onChange={(e) => setFormData({...formData, message: e.target.value})}>
             </textarea>
         </div>
         <div className='form-gorup mb-3'>
-            <input type="text" className='form-control' placeholder='Tags(comma separated)' onChange={(e) => setFormData({...formData,tags:e.target.value})}>
+            <input type="text" className='form-control' value={formData?.tags} placeholder='Tags(comma separated)' onChange={(e) => setFormData({...formData,tags:e.target.value})}>
             </input>
         </div>
         <div className='form-group mb-3'>
@@ -48,7 +51,7 @@ export const Form=({user}) => {
             />
         </div>
         <div className='form-group'>
-            <button className='btn btn-primary' type="submit">Submit</button>
+            <button disabled={formData?.btnDisable} className='btn btn-primary' type="submit">Submit</button>
         </div>
     </form>
                 ):(

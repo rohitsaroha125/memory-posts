@@ -7,7 +7,7 @@ const router=express.Router()
 router.get('/',postControllers.fetchPosts)
 router.get('/:id',auth,postControllers.fetchPostById)
 router.post('/',auth,postControllers.createPost)
-router.post('/like/:id',auth,postControllers.likePost)
+router.post('/like',auth,postControllers.likePost)
 router.delete('/delete/:id',auth,postControllers.deletePost)
 router.post('/update',auth,postControllers.updatePost)
 
