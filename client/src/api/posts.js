@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getCookie } from '../auth/helpers'
 
-const url=`http://localhost:5000/posts`
+const url=`https://memories-feed-project.herokuapp.com/posts`
 
 export const fetchPosts=() => axios.get(url,{
     headers:{
